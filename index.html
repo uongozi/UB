@@ -311,16 +311,13 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             margin-top: 30px;
-            /* Hapa ndipo max-height inapofanya kazi kufunga gridi */
             max-height: 0; 
             overflow: hidden;
             opacity: 0;
-            /* Muda wa transition umeongezwa ili kutoa muda wa kadi zote kuhesabiwa */
             transition: max-height 1.0s ease-in-out, opacity 0.7s ease;
         }
 
         .categories__grid.active {
-            /* Tumeondoa max-height hapa. Sasa JS ndio itaweka urefu sahihi kulingana na content (scrollHeight) */
             opacity: 1;
         }
 
@@ -329,7 +326,7 @@
             background: #1a1a1a;
             padding: 30px;
             border-radius: var(--border-radius);
-            text-align: left;
+            text-align: center; 
             border-top: 5px solid var(--color-primary);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -340,7 +337,15 @@
             border-color: var(--color-accent);
         }
 
-        /* Hii ndio inahakikisha kadi zote zinaanza kuonekana */
+        /* Kuhakikisha link ya Nominate inakaa katikati */
+        .category-card__link {
+             display: inline-block;
+             margin-top: 15px;
+             font-weight: 700;
+             color: var(--color-accent);
+             text-decoration: none;
+        }
+
         .categories__grid.active .category-card {
              animation: fadeInUp 0.5s ease forwards;
         }
@@ -351,10 +356,10 @@
             color: var(--color-text-light); 
             margin-top: 15px; 
             margin-bottom: 0;
-            display: flex; /* Tumia flexbox */
-            justify-content: center; /* Katikati */
-            flex-wrap: wrap; /* Ruhusu kadi kushuka kwenye laini mpya kwenye skrini ndogo */
-            gap: 20px; /* Nafasi kati ya namba na email */
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 20px; 
         }
         
         .contact-info a {
@@ -367,13 +372,47 @@
             color: #fff;
         }
         
-        .footer .contact-info {
-            display: block; /* Katika footer tunaweza kuruhusu kadi kushuka */
-            text-align: center;
-            margin-top: 10px;
+        /* REKEBISHO MPYA LA FOOTER */
+        .footer {
+            text-align: center; 
+            padding: 30px 8%;
+            border-top: 1px solid #333;
         }
-        /* MWISHO WA REKEBISHO MPYA */
+        /* Mabadiliko ya Mpangilio wa Mawasiliano katika Footer */
+        .footer .contact-block {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 15px; /* Nafasi kati ya contacts na copyright */
+        }
+        .footer .contact-block p {
+            margin: 0;
+        }
 
+        /* STYLES ZA SLIDESHOW MPYA (Picha ndogo zaidi) */
+        .slideshow-container {
+            max-width: 700px; /* Ukubwa mpya wa upana wa container (umeshushwa) */
+            height: 400px; /* Ukubwa mpya wa urefu wa container (umeshushwa) */
+            position: relative;
+            margin: 0 auto; /* Huweka katikati */
+            overflow: hidden;
+            padding: 50px 0;
+            background: #1a1a1a;
+        }
+
+        .slideshow-wrapper {
+            display: flex;
+            transition: transform 0.8s ease-in-out;
+            height: 100%; 
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%; 
+            background-size: cover; 
+            background-position: center;
+        }
 
         /* MOBILE OPTIMIZATION */
         @media (max-width: 768px) {
@@ -388,90 +427,16 @@
                 gap: 10px;
             }
 
-            .header__logo {
-                padding-right: 0;
-                margin-bottom: 0;
-                order: 1;
+            .slideshow-container {
+                max-width: 100%; /* Rudisha 100% kwa mobile */
+                height: 250px; /* Badilisha urefu wa mobile kuwa mfupi zaidi */
+                padding: 30px 0;
             }
 
-            .header__logo img {
-                height: 40px;
+            .slide {
+                height: 100%; 
             }
 
-            .header__nav {
-                order: 2;
-                width: 100%;
-                text-align: center;
-            }
-
-            .header__nav-list {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                list-style: none;
-                padding: 0;
-                margin-bottom: 5px;
-            }
-
-            .header__nav-list li {
-                margin: 0 5px;
-            }
-
-            .header__nav-link {
-                padding: 5px 8px;
-                font-size: 0.85em;
-            }
-
-            .header__nav-list .btn--primary {
-                display: block;
-                width: 80%;
-                margin: 5px auto 0;
-                font-size: 0.9em;
-                padding: 8px 15px;
-            }
-
-            .hero {
-                text-align: center;
-                padding: 0 4%;
-                height: 85vh;
-                justify-content: center;
-            }
-
-            .hero::before {
-                background: rgba(0, 0, 0, 0.85);
-            }
-
-            .hero__content {
-                max-width: 100%;
-                padding: 10px;
-            }
-
-            .hero__subtitle {
-                font-size: 1.1rem;
-                margin-bottom: 20px;
-            }
-
-            .categories {
-                padding: 50px 4%;
-            }
-
-            .categories__grid {
-                /* Sheria ya kuhakikisha kadi zote zinaonekana bila kujificha */
-                grid-template-columns: 1fr; /* Kila kadi inachukua upana wote */
-                gap: 20px;
-                margin-top: 20px;
-            }
-            
-            .categories__grid.active {
-                /* Urefu sasa unadhibitiwa na JS, tunahakikisha overflow inaruhusiwa */
-                overflow: visible; /* Hii inasaidia sana kwenye mobile kuzuia kukatwa */
-            }
-
-            .category-group-header {
-                font-size: 1.2em;
-                padding: 15px;
-            }
-            
             .contact-info {
                 flex-direction: column;
                 gap: 10px;
@@ -544,7 +509,16 @@
                     📞 <a href="tel:+254710910515">+254 710 910 515</a>
                 </span>
             </div>
+            
             <a href="#learn-more-full" class="btn btn--primary" style="background: var(--color-primary); color: var(--color-light); margin-top: 30px;">Read Full Story</a>
+        </div>
+    </section>
+    
+    <section id="category-slideshow" class="slideshow-container">
+        <div id="slideshow-wrapper" class="slideshow-wrapper">
+            <div class="slide" style="background-image: url('1.jpg');"></div>
+            <div class="slide" style="background-image: url('2.jpg');"></div>
+            <div class="slide" style="background-image: url('3.jpg');"></div>
         </div>
     </section>
 
@@ -636,7 +610,7 @@
 
                 <div class="category-card">
                     <div class="category-card__icon">🥇</div> 
-                    <h3 class="category-card__title">12. FEMALE CABINET SECRETARY (CS) OF THE YEAR</h3>
+                    <h3 class="category-card__title">12. FEMALE CABINET SECRETARY (CS) OF THE YEAR
                     <p class="category-card__description">For a Female Cabinet Secretary who has led impactful and citizen-focused policy execution, characterized by Accountability and Reliability.</p>
                     <a href="#nominate-cs-f" class="category-card__link">Nominate Candidate &rarr;</a>
                 </div>
@@ -773,18 +747,17 @@
     </section>
 
     <footer class="footer">
-        <p>&copy; 2025 Uongozi Bora Awards. All Rights Reserved.</p>
-        <p style="color: var(--color-text-dim);">Event Headquarters: Woodley Estate, Nairobi Area, Kenya.</p>
-        
-        <div class="contact-info">
+        <div class="contact-block">
             <p style="color: var(--color-text-dim); margin-bottom: 0;">
                 📧 <a href="mailto:ubaawardseastafrica@gmail.com">ubaawardseastafrica@gmail.com</a>
             </p>
-            <p style="color: var(--color-text-dim); margin-top: 5px;">
+            <p style="color: var(--color-text-dim); margin-top: 0;">
                 📞 <a href="tel:+254710910515">+254 710 910 515</a>
             </p>
         </div>
-        </footer>
+        <p style="color: var(--color-text-dim); margin-bottom: 5px;">Event Headquarters: Woodley Estate, Nairobi Area, Kenya.</p>
+        <p>&copy; 2025 Uongozi Bora Awards. All Rights Reserved.</p>
+    </footer>
 
     <script>
         // COUNTDOWN FUNCTIONALITY 
@@ -819,7 +792,26 @@
         const x = setInterval(updateCountdown, 1000);
 
         // =========================================================================
-        // CORE JAVASCRIPT FOR CATEGORIES ACCORDION (IMEBORESHWA)
+        // JAVASCRIPT FOR SLIDESHOW 
+        // =========================================================================
+        const wrapper = document.getElementById('slideshow-wrapper');
+        if (wrapper) {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalSlides;
+                const offset = -currentIndex * 100;
+                wrapper.style.transform = `translateX(${offset}%)`;
+            }
+
+            // Badili slide kila baada ya sekunde 10
+            setInterval(nextSlide, 10000); 
+        }
+
+        // =========================================================================
+        // JAVASCRIPT FOR CATEGORIES ACCORDION 
         // =========================================================================
         document.addEventListener('DOMContentLoaded', () => {
             const headers = document.querySelectorAll('.category-group-header');
@@ -850,16 +842,12 @@
                         targetContent.classList.add('active');
                         icon.textContent = '-';
                         
-                        // Tumia requestAnimationFrame kuhakikisha urefu unakwenda 'auto' kisha unakokotoa scrollHeight
                         requestAnimationFrame(() => {
-                             // Hesabu urefu halisi (scrollHeight) kadi zote zikionekana
                             targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
                         });
 
-                        // Animate ALL cards immediately
                         const cards = targetContent.querySelectorAll('.category-card');
                         cards.forEach((card, index) => {
-                            // Weka animation delay kwa kila kadi
                             card.style.animationDelay = `${index * 0.05}s`;
                             card.style.animation = `fadeInUp 0.5s ease forwards`;
                         });
@@ -868,15 +856,12 @@
                         // KUFUNGA KATEGORIA
                         icon.textContent = '+';
                         
-                        // Kwanza, weka urefu wa sasa ili transition ifanye kazi
                         targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
                         
-                        // Kisha, baada ya muda mfupi, weka 0 ili ifunge na transition
                         requestAnimationFrame(() => {
                             targetContent.style.maxHeight = '0';
                         });
                         
-                        // Ondoa darasa la 'active' baada ya transition kumalizika
                          targetContent.addEventListener('transitionend', function handler() {
                             targetContent.classList.remove('active');
                             targetContent.removeEventListener('transitionend', handler);
@@ -885,16 +870,13 @@
                 });
             });
             
-            // HUU NI MUHIMU KWA AJILI YA KUHAKIKISHA KADI ZINAENDA SAWA UKIBADILI UKUBWA WA KIOO
+            // HAKIKISHA UKUBWA WA KADI UNAENDA SAWA NA UKUBWA WA KIOO
             window.addEventListener('resize', () => {
                  document.querySelectorAll('.categories__grid.active').forEach(grid => {
-                    // Weka urefu sifuri kwanza
                     grid.style.maxHeight = 'none'; 
-                    // Kisha weka urefu mpya wa scrollHeight
                     grid.style.maxHeight = grid.scrollHeight + 'px';
                 });
             });
-
         });
     </script>
 </body>
