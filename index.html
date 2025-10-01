@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuzo za Uongozi Bora | Kupongeza Ubora wa Uongozi Afrika Mashariki na Kati</title>
+    <title>Uongozi Bora Awards | Recognizing Leadership Excellence in East & Central Africa</title>
+    
+    <link rel="icon" type="image/png" href="fav.png"> 
+    
+    <meta name="description" content="The Uongozi Bora Awards (UBA) is an inaugural award show celebrating proven leaders driving impactful change across East African region in Government, Corporate & NGO sectors.">
+    <meta name="keywords" content="Uongozi Bora Awards, UBA, Leadership Excellence, East Africa, Government Awards, Corporate Awards, NGO Awards, Kenya, Tanzania, Uganda">
+    
+    <meta name="designer" content="MATO MEDIA TZ">
+    <meta name="author" content="MATO MEDIA TZ"> 
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ubaeastafrica.com/"> 
+    <meta property="og:title" content="Uongozi Bora Awards | Celebrating East African Leadership Excellence">
+    <meta property="og:description" content="Recognizing Integrity, Accountability, and Viability in Government, Corporate & NGO leadership. Gala Night: December 7, 2025.">
+    <meta property="og:image" content="https://www.ubaeastafrica.com/og-image.jpg"> 
+    
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.ubaeastafrica.com/"> 
+    <meta property="twitter:title" content="Uongozi Bora Awards | Celebrating East African Leadership Excellence">
+    <meta property="twitter:description" content="Recognizing Integrity, Accountability, and Viability in Government, Corporate & NGO leadership. Gala Night: December 7, 2025.">
+    <meta property="twitter:image" content="https://www.ubaeastafrica.com/twitter-image.jpg"> 
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+    
     <style>
         /* GLOBAL VARIABLES */
         :root {
@@ -109,6 +132,11 @@
             transform: scale(1.05);
         }
 
+        .header__nav {
+            display: flex;
+            align-items: center;
+        }
+
         .header__nav-list {
             display: flex;
             list-style: none;
@@ -123,6 +151,20 @@
         }
 
         .header__nav-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* SOCIAL ICONS IN HEADER */
+        .header__social {
+            margin-left: 20px;
+        }
+        .header__social a {
+            color: var(--color-text-light);
+            font-size: 1.5em;
+            margin-left: 15px;
+            transition: color 0.3s;
+        }
+        .header__social a:hover {
             color: var(--color-accent);
         }
 
@@ -270,14 +312,15 @@
             }
         }
 
+        /* KUREKEBISHA UKUBWA WA MANENO WA CATEGORY HEADER (Desktop) */
         .category-group-header {
             background: var(--color-primary);
             color: var(--color-text-light);
-            padding: 20px;
-            margin: 40px auto 0;
+            padding: 15px 20px; 
+            margin: 30px auto 0; 
             border-radius: var(--border-radius);
             cursor: pointer;
-            font-size: 1.8em;
+            font-size: 1.5em; 
             font-family: var(--font-heading);
             font-weight: 700;
             max-width: 1000px;
@@ -330,6 +373,11 @@
             border-top: 5px solid var(--color-primary);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        
+        .category-card__title {
+            font-size: 1.1em; 
+            margin-bottom: 10px;
+        }
 
         .category-card:hover {
             transform: translateY(-5px);
@@ -337,7 +385,6 @@
             border-color: var(--color-accent);
         }
 
-        /* Kuhakikisha link ya Nominate inakaa katikati */
         .category-card__link {
              display: inline-block;
              margin-top: 15px;
@@ -350,7 +397,7 @@
              animation: fadeInUp 0.5s ease forwards;
         }
 
-        /* REKEBISHO MPYA LA MPANGILIO WA MAWASILIANO */
+        /* MAWASILIANO GLOBAL STYLE (Kuondoa Underline) */
         .contact-info {
             font-weight: 700; 
             color: var(--color-text-light); 
@@ -364,38 +411,91 @@
         
         .contact-info a {
             color: var(--color-accent); 
-            text-decoration: none;
+            text-decoration: none; /* IMEONDOLEWA UNDERLINE HAPA */
             transition: color 0.3s ease;
         }
         
         .contact-info a:hover {
             color: #fff;
+            text-decoration: underline; /* Weka underline inapotikiswa */
         }
-        
-        /* REKEBISHO MPYA LA FOOTER */
+
+        /* FOOTER */
         .footer {
             text-align: center; 
             padding: 30px 8%;
             border-top: 1px solid #333;
         }
-        /* Mabadiliko ya Mpangilio wa Mawasiliano katika Footer */
+
         .footer .contact-block {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            margin-bottom: 15px; /* Nafasi kati ya contacts na copyright */
+            margin-bottom: 15px; 
         }
         .footer .contact-block p {
             margin: 0;
         }
+        
+        /* FOOTER SOCIAL ICONS */
+        .footer__social-icons {
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
 
-        /* STYLES ZA SLIDESHOW MPYA (Picha ndogo zaidi) */
+        .footer__social-icons a {
+            color: var(--color-text-dim);
+            font-size: 1.8em;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer__social-icons a:hover {
+            color: var(--color-accent);
+        }
+
+        /* MATO MEDIA STYLE AND ANIMATION */
+        @keyframes pulse-glow {
+            0% {
+                text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent);
+                opacity: 0.8;
+            }
+            50% {
+                text-shadow: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent);
+                opacity: 1;
+            }
+            100% {
+                text-shadow: 0 0 5px var(--color-accent), 0 0 10px var(--color-accent);
+                opacity: 0.8;
+            }
+        }
+        
+        .developer-info {
+            margin-top: 15px; 
+            font-size: 0.85em;
+            color: var(--color-text-dim);
+        }
+        .developer-info a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 700;
+            animation: pulse-glow 2.5s infinite ease-in-out;
+            transition: color 0.3s;
+        }
+        .developer-info a:hover {
+            color: #fff;
+            text-decoration: underline;
+            animation: none; 
+        }
+
+
+        /* STYLES ZA SLIDESHOW */
         .slideshow-container {
-            max-width: 700px; /* Ukubwa mpya wa upana wa container (umeshushwa) */
-            height: 400px; /* Ukubwa mpya wa urefu wa container (umeshushwa) */
+            max-width: 700px; 
+            height: 400px; 
             position: relative;
-            margin: 0 auto; /* Huweka katikati */
+            margin: 0 auto; 
             overflow: hidden;
             padding: 50px 0;
             background: #1a1a1a;
@@ -427,19 +527,43 @@
                 gap: 10px;
             }
 
-            .slideshow-container {
-                max-width: 100%; /* Rudisha 100% kwa mobile */
-                height: 250px; /* Badilisha urefu wa mobile kuwa mfupi zaidi */
-                padding: 30px 0;
+            .header__nav {
+                justify-content: center;
+                width: 100%;
+            }
+            .header__nav-list {
+                justify-content: center;
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            .header__social {
+                margin-left: 0;
+                margin-top: 10px;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+            .header__social a {
+                margin: 0 10px;
+            }
+            
+            .category-group-header {
+                font-size: 1.1em; 
             }
 
-            .slide {
-                height: 100%; 
+            .slideshow-container {
+                max-width: 100%; 
+                height: 250px; 
+                padding: 30px 0;
             }
 
             .contact-info {
                 flex-direction: column;
                 gap: 10px;
+            }
+            
+            .developer-info {
+                margin-top: 10px;
             }
         }
     </style>
@@ -458,6 +582,9 @@
                 <li><a href="#nominate" class="btn btn--primary">NOMINATE NOW</a></li>
             </ul>
         </nav>
+        <div class="header__social">
+            <a href="https://www.instagram.com/uba_uongoziboraawards?" target="_blank" aria-label="Instagram Page"><i class="fab fa-instagram"></i></a>
+        </div>
     </header>
 
     <section id="home" class="hero">
@@ -503,10 +630,10 @@
             <div class="contact-info">
                 <span style="color: var(--color-accent);">CONTACT US:</span> 
                 <span>
-                    📧 <a href="mailto:ubaawardseastafrica@gmail.com">ubaawardseastafrica@gmail.com</a>
+                    📧 <a href="mailto:ubaawardseastafrica@gmail.com" style="text-decoration: none;">ubaawardseastafrica@gmail.com</a>
                 </span>
                 <span>
-                    📞 <a href="tel:+254710910515">+254 710 910 515</a>
+                    📞 <a href="tel:+254710910515" style="text-decoration: none;">+254 710 910 515</a>
                 </span>
             </div>
             
@@ -749,14 +876,24 @@
     <footer class="footer">
         <div class="contact-block">
             <p style="color: var(--color-text-dim); margin-bottom: 0;">
-                📧 <a href="mailto:ubaawardseastafrica@gmail.com">ubaawardseastafrica@gmail.com</a>
+                📧 <a href="mailto:ubaawardseastafrica@gmail.com" style="text-decoration: none;">ubaawardseastafrica@gmail.com</a>
             </p>
             <p style="color: var(--color-text-dim); margin-top: 0;">
-                📞 <a href="tel:+254710910515">+254 710 910 515</a>
+                📞 <a href="tel:+254710910515" style="text-decoration: none;">+254 710 910 515</a>
             </p>
         </div>
         <p style="color: var(--color-text-dim); margin-bottom: 5px;">Event Headquarters: Woodley Estate, Nairobi Area, Kenya.</p>
+
+        <div class="footer__social-icons">
+             <a href="https://www.instagram.com/uba_uongoziboraawards?" target="_blank" aria-label="Instagram Page"><i class="fab fa-instagram"></i></a>
+        </div>
+        
         <p>&copy; 2025 Uongozi Bora Awards. All Rights Reserved.</p>
+        
+        <div class="developer-info">
+            Developed by 
+            <a href="https://www.instagram.com/matomediatz/?" target="_blank" rel="noopener noreferrer">MATO MEDIA TZ</a>
+        </div>
     </footer>
 
     <script>
