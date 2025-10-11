@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBA CMS Admin - ubaeastafrica.com</title>
+    <style>
+        :root {
+            --color-primary: #1e3a8a;
+            --color-accent: #facc15;
+            --color-bg-dark: #0a0a0a;
+            --color-text-light: #e5e5e5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--color-bg-dark);
+            color: var(--color-text-light);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .admin-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 8px;
+            border: 2px solid var(--color-accent);
+        }
+        
+        h1 {
+            color: var(--color-accent);
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #999;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--color-text-light);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background: #2a2a2a;
+            color: white;
+            font-size: 16px;
+        }
+        
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        button {
+            background: var(--color-accent);
+            color: black;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            margin: 5px;
+            transition: opacity 0.3s;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .logout-btn {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .view-site-btn {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        #statusMessage {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            display: none;
+            text-align: center;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 50px auto;
+        }
+        
+        .dashboard {
+            display: none;
+        }
+        
+        .current-data {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- LOGIN FORM -->
+    <div id="loginForm" class="admin-container login-form">
+        <h1>🔐 UBA CMS Admin</h1>
+        <p class="subtitle">ubaeastafrica.com Control Panel</p>
+        
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter admin username" value="admin">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter password" value="ubapassword123">
+        </div>
+        
+        <button onclick="login()" style="width: 100%;">Login to CMS</button>
+        
+        <div style="text-align: center; margin-top: 20px; color: #666;">
+            <small>Default: admin / ubapassword123</small>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="admin-container dashboard">
+        <h1>🎯 UBA Content Management</h1>
+        <p class="subtitle">Manage ubaeastafrica.com content</p>
+        
+        <div class="btn-group">
+            <button class="view-site-btn" onclick="viewWebsite()">🌐 View Website</button>
+            <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+        </div>
+
+        <div class="current-data">
+            <strong>📍 Current Settings:</strong>
+            <div id="currentSettings"></div>
+        </div>
+
+        <h2>📅 Event Information</h2>
+        <div class="form-group">
+            <label for="adminEventDate">Gala Date:</label>
+            <input type="date" id="adminEventDate">
+        </div>
+        
+        <div class="form-group">
+            <label for="adminContactEmail">Contact Email:</label>
+            <input type="email" id="adminContactEmail" placeholder="ubaawardseastafrica@gmail.com">
+        </div>
+        
+        <div class="form-group">
+            <label for="adminContactPhone">Contact Phone:</label>
+            <input type="text" id="adminContactPhone" placeholder="+254 710 910 515">
+        </div>
+        
+        <h2>✏️ Hero Section Content</h2>
+        <div class="form-group">
+            <label for="adminHeroTitle">Hero Title:</label>
+            <input type="text" id="adminHeroTitle" placeholder="Recognizing Leadership Excellence In Government, Corporate & NGO">
+        </div>
+        
+        <div class="form-group">
+            <label for="adminHeroSubtitle">Hero Subtitle:</label>
+            <textarea id="adminHeroSubtitle" placeholder="The Uongozi Bora Awards (UBA) is an inaugural award show celebrating proven leaders driving impactful change across the East African region."></textarea>
+        </div>
+        
+        <div class="btn-group">
+            <button onclick="saveToDatabase()">💾 Save All Changes</button>
+            <button onclick="loadFromDatabase()">🔄 Load Current Data</button>
+            <button onclick="resetToDefault()">🔄 Reset to Default</button>
+        </div>
+        
+        <div id="statusMessage"></div>
+    </div>
+
+    <script>
+        // ADMIN CREDENTIALS
+        const ADMIN_USERNAME = "admin";
+        const ADMIN_PASSWORD = "ubapassword123";
+        
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                loadFromDatabase();
+                showStatus('Welcome to UBA CMS!', 'success');
+            } else {
+                showStatus('Invalid username or password!', 'error');
+            }
+        }
+        
+        function logout() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            showStatus('Logged out successfully', 'success');
+        }
+        
+        function viewWebsite() {
+            window.open('https://www.ubaeastafrica.com', '_blank');
+        }
+        
+        function loadFromDatabase() {
+            const data = JSON.parse(localStorage.getItem('ubaWebsiteData')) || getDefaultData();
+            
+            // Load form fields
+            document.getElementById('adminEventDate').value = data.eventDate;
+            document.getElementById('adminContactEmail').value = data.contactEmail;
+            document.getElementById('adminContactPhone').value = data.contactPhone;
+            document.getElementById('adminHeroTitle').value = data.heroTitle;
+            document.getElementById('adminHeroSubtitle').value = data.heroSubtitle;
+            
+            // Show current settings
+            updateCurrentSettings(data);
+        }
+        
+        function saveToDatabase() {
+            const data = {
+                eventDate: document.getElementById('adminEventDate').value,
+                contactEmail: document.getElementById('adminContactEmail').value,
+                contactPhone: document.getElementById('adminContactPhone').value,
+                heroTitle: document.getElementById('adminHeroTitle').value,
+                heroSubtitle: document.getElementById('adminHeroSubtitle').value,
+                lastUpdated: new Date().toLocaleString()
+            };
+            
+            // Save to localStorage (kwa sasa)
+            localStorage.setItem('ubaWebsiteData', JSON.stringify(data));
+            
+            // Update current settings display
+            updateCurrentSettings(data);
+            
+            showStatus('✅ Changes saved successfully! Website updated.', 'success');
+        }
+        
+        function resetToDefault() {
+            const defaultData = getDefaultData();
+            localStorage.setItem('ubaWebsiteData', JSON.stringify(defaultData));
+            loadFromDatabase();
+            showStatus('✅ Reset to default content', 'success');
+        }
+        
+        function getDefaultData() {
+            return {
+                eventDate: '2025-12-07',
+                contactEmail: 'ubaawardseastafrica@gmail.com',
+                contactPhone: '+254 710 910 515',
+                heroTitle: 'Recognizing Leadership Excellence In Government, Corporate & NGO',
+                heroSubtitle: 'The Uongozi Bora Awards (UBA) is an inaugural award show celebrating proven leaders driving impactful change across the East African region.',
+                lastUpdated: new Date().toLocaleString()
+            };
+        }
+        
+        function updateCurrentSettings(data) {
+            const settingsDiv = document.getElementById('currentSettings');
+            settingsDiv.innerHTML = `
+                📅 Gala: ${new Date(data.eventDate).toLocaleDateString()} | 
+                📧 ${data.contactEmail} | 
+                📞 ${data.contactPhone} |
+                🔄 Last updated: ${data.lastUpdated}
+            `;
+        }
+        
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            statusDiv.style.background = type === 'success' ? '#10b981' : '#dc2626';
+            statusDiv.style.color = 'white';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Auto-load on page refresh
+        window.addEventListener('load', function() {
+            // Check if already logged in (simple check)
+            const hasData = localStorage.getItem('ubaWebsiteData');
+            if (hasData && window.location.hash === '#admin') {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                loadFromDatabase();
+            }
+        });
+    </script>
+</body>
+</html>
