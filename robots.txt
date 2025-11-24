@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Sitemap files
+Sitemap: https://www.ubaeastafrica.com/sitemap.xml
+
+# Directories to disallow (kama zipo)
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /admin/
