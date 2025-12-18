@@ -16,13 +16,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.ubaeastafrica.com/"> 
     <meta property="og:title" content="Uongozi Bora Awards | Celebrating East African Leadership Excellence">
-    <meta property="og:description" content="Recognizing Integrity, Accountability, and Viability in Government, Corporate & NGO leadership. Gala Night: December 16, 2025.">
+    <meta property="og:description" content="Recognizing Integrity, Accountability, and Viability in Government, Corporate & NGO leadership. Gala Night: December 23, 2025.">
     <meta property="og:image" content="https://www.ubaeastafrica.com/og-image.jpg"> 
     
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.ubaeastafrica.com/"> 
     <meta property="twitter:title" content="Uongozi Bora Awards | Celebrating East African Leadership Excellence">
-    <meta property="twitter:description" content="Recognizing Integrity, Accountability, and Viability in Government, Corporate & NGO leadership. Gala Night: December 16, 2025.">
+    <meta property="twitter:description" content="Recognizing Integrity, Accountability, and Viability in Government, Corporate & NGO leadership. Gala Night: December 23, 2025.">
     <meta property="twitter:image" content="https://www.ubaeastafrica.com/twitter-image.jpg"> 
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -75,6 +75,29 @@
         .section {
             padding: var(--spacing-section);
             text-align: center;
+        }
+
+        /* STYLE MPYA KWA NCHI KUUBWA */
+        .inchi-kuu {
+            font-weight: 900;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            font-size: 1.05em;
+            letter-spacing: 0.5px;
+        }
+
+        /* STYLE MPYA KWA NCHI ZINAZOSHIRIKI (Participating Countries) */
+        .inchi-shiriki {
+            font-weight: 700;
+            color: #ffffff; /* nyeupe */
+            background-color: #10b981; /* kijani */
+            padding: 2px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+            margin: 0 2px;
+            display: inline-block;
         }
 
         /* BUTTONS */
@@ -591,7 +614,7 @@
         <div class="hero__content">
             <p style="color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">East Africa's Inaugural Leadership Award Show</p>
 
-            <div class="hero__event-info">Gala Night: DECEMBER 16, 2025 | Nairobi, Kenya</div>
+            <div class="hero__event-info">Gala Night: DECEMBER 23, 2025 | HYATT REGENCY WESTLANDS NAIROBI-KENYA</div>
 
             <h1 class="hero__title">Recognizing Leadership Excellence In Government, Corporate & NGO</h1>
             <p class="hero__subtitle">The Uongozi Bora Awards (UBA) is an inaugural award show celebrating proven leaders driving impactful change across the East African region.</p>
@@ -625,7 +648,17 @@
             <h2>About UBA - The Inaugural Award Show</h2>
             <p>The UBA-Uongozi Bora Awards is an inaugural Award Show recognizing Leadership Excellence In Government, Corporate & NGO with the spotlight being on East Africa and Central Africa. We celebrate proven leaders driving positive change and sustainable impact across these foundational sectors based on our five pillars:</p>
             <p style="font-weight: 700; color: var(--color-accent); margin-bottom: 0;">&check; INTEGRITY &nbsp; &check; ACCOUNTABILITY &nbsp; &check; RELIABILITY &nbsp; &check; ACCEPTABILITY &nbsp; &check; VIABILITY</p>
-            <p style="font-weight: 700; color: var(--color-accent); margin-top: 15px; margin-bottom: 0;">Our Event Location: Woodley Estate, Nairobi Area, Kenya.</p>
+            
+            <!-- Mstari mpya: Inaugural Focus -->
+            <p style="font-weight: 700; color: var(--color-accent); margin-top: 15px; margin-bottom: 5px;">Inaugural Focus: East & Central Africa, including Kenya, Tanzania, Uganda, Rwanda, Burundi & DRC.</p>
+            
+            <!-- Mstari mpya: Participating Countries -->
+            <p style="font-weight: 700; color: #ffffff; background-color: #10b981; padding: 8px 12px; border-radius: 4px; margin-top: 15px; margin-bottom: 5px; display: inline-block;">
+                Participating Countries: <span class="inchi-shiriki">SOMALIA</span>, <span class="inchi-shiriki">DJIBOUTI</span>, <span class="inchi-shiriki">ETHIOPIA</span> & <span class="inchi-shiriki">ERITREA</span>.
+            </p>
+            
+            <!-- Mstari wa zamani uliobadilishwa: Event Location -->
+            <p style="font-weight: 700; color: var(--color-accent); margin-top: 15px; margin-bottom: 0;">Our Event Location: HYATT REGENCY WESTLANDS NAIROBI-KENYA.</p>
             
             <div class="contact-info">
                 <span style="color: var(--color-accent);">CONTACT US:</span> 
@@ -882,7 +915,7 @@
                 📞 <a href="tel:+254710910515" style="text-decoration: none;">+254 710 910 515</a>
             </p>
         </div>
-        <p style="color: var(--color-text-dim); margin-bottom: 5px;">Event Headquarters: Woodley Estate, Nairobi Area, Kenya.</p>
+        <p style="color: var(--color-text-dim); margin-bottom: 5px;">Event Headquarters: HYATT REGENCY WESTLANDS NAIROBI-KENYA.</p>
 
         <div class="footer__social-icons">
              <a href="https://www.instagram.com/uba_uongoziboraawards?" target="_blank" aria-label="Instagram Page"><i class="fab fa-instagram"></i></a>
@@ -898,7 +931,7 @@
 
     <script>
         // COUNTDOWN FUNCTIONALITY 
-        const galaDate = new Date("December 16, 2025 18:00:00").getTime(); 
+        const galaDate = new Date("December 23, 2025 18:00:00").getTime(); // TAREHE IMEBADILISHWA HAPA
 
         function updateCountdown() {
             const now = new Date().getTime();
